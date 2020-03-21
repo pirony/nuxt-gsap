@@ -9,5 +9,5 @@ module.exports = {
   },
   buildModules: [
     { handler: require('../') }
-  ]
+  ],
 }
