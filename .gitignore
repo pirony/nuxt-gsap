@@ -1,7 +1,8 @@
 node_modules
 *.iml
 .idea
-*.lock*
+*.lock
+yarn.lock
 *.log*
 .nuxt
 .vscode
