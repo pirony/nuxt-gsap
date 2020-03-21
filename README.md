@@ -34,7 +34,7 @@ yarn add --dev nuxt-gsap # or npm install -dev nuxt-gsap
 1. Add `nuxt-gsap` dependency to your project
 
 ```bash
-yarn add nuxt-gsap # or npm install -dev nuxt-gsap
+yarn add nuxt-gsap # or npm install nuxt-gsap
 ```
 
 2. Add `nuxt-gsap` to the `modules` section of `nuxt.config.js`
