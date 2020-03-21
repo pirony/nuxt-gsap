@@ -1,6 +1,6 @@
 {
   "name": "nuxt-gsap",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Add GSAP to nuxt",
   "repository": "pirony/nuxt-gsap",
   "license": "MIT",
