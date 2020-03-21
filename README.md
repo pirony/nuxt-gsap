@@ -6,16 +6,35 @@
 [![Codecov][codecov-src]][codecov-href]
 [![License][license-src]][license-href]
 
-> Add GSAP to nuxt
+> Easy GSAP ([https://greensock.com/](https://greensock.com/)) integration with Nuxt.js
+
 
 [📖 **Release Notes**](./CHANGELOG.md)
 
 ## Setup
 
+#### For Nuxt version > 2.9
 1. Add `nuxt-gsap` dependency to your project
 
 ```bash
-yarn add nuxt-gsap # or npm install nuxt-gsap
+yarn add --dev nuxt-gsap # or npm install -dev nuxt-gsap
+```
+
+2. Add `nuxt-gsap` to the `buildModules` section of `nuxt.config.js`
+
+```js
+{
+  buildModules: [
+    'nuxt-gsap',
+  ]
+}
+```
+
+#### For Nuxt version < 2.9
+1. Add `nuxt-gsap` dependency to your project
+
+```bash
+yarn add --dev nuxt-gsap # or npm install -dev nuxt-gsap
 ```
 
 2. Add `nuxt-gsap` to the `modules` section of `nuxt.config.js`
@@ -23,13 +42,66 @@ yarn add nuxt-gsap # or npm install nuxt-gsap
 ```js
 {
   modules: [
-    // Simple usage
-    'nuxt-gsap',
-
-    // With options
-    ['nuxt-gsap', { /* module options */ }]
+    'nuxt-gsap'
   ]
 }
+```
+## options
+
+You can pass different options using module inline options:
+
+```js
+  buildModules: [
+    'nuxt-gsap', [
+      {
+        imports: ['Back', 'Circ'] // Specify the gsap modules you want to import. By default, gsap & Linear are loaded
+      }
+    ]
+  ]
+```
+
+or nuxtGsap section in nuxt.config.js
+
+```js
+  buildModules: [
+    'nuxt-gsap'
+  ],
+  nuxtGsap: {
+    imports: ['Back', 'Circ'] // Specify the gsap modules you want to import. By default, gsap & Linear are loaded
+  }
+```
+
+## Usage
+This module globally injects $gsap instance, meaning that you can access it anywhere using this.$gsap. For plugins, asyncData, fetch, nuxtServerInit and Middleware, you can access it from context.$gsap
+
+#### Example:
+
+index.vue
+
+```js
+<template>
+  <h1 ref="test" class="test">
+    Works!
+  </h1>
+</template>
+
+<script>
+export default {
+  mounted () {
+    this.$nextTick(() => { // When using $refs, must wait for nextTick
+      const tl = this.$gsap.timeline({ repeat: -1, ease: this.$gsap.Linear.easeInOut(2) })
+      tl.to('.test', 2, { x: 200 }) // With css selector
+      tl.to(this.$refs.test, 0.5, { x: 0 }) // With refs
+    })
+  }
+}
+</script>
+<style lang="scss" scoped>
+  .test {
+    color: red;
+    display: inline-block;
+  }
+</style>
 ```
 
 ## Development
@@ -37,6 +109,7 @@ yarn add nuxt-gsap # or npm install nuxt-gsap
 1. Clone this repository
 2. Install dependencies using `yarn install` or `npm install`
 3. Start development server using `npm run dev`
+4. Visit http://localhost:3000
 
 ## License
 
