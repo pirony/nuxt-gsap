@@ -4533,8 +4533,8 @@ growly@^1.3.0:
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
 
 gsap@^3.2.5:
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.2.5.tgz#4e4841e8c219b06d0d0d54c1c09c0681e2351c0a"
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.6.0.tgz#925f25370c698ce0f6ea563522da8f6b5ed21b0a"
 
 gzip-size@^5.0.0:
   version "5.1.1"
