@@ -48,13 +48,14 @@ yarn add nuxt-gsap # or npm install nuxt-gsap
 ```
 ## options
 
-You can pass different options using module inline options:
+You can pass different options using module inline options, with gsap 3 you probably want to use only plugins:
 
 ```js
   buildModules: [
     'nuxt-gsap', [
       {
-        imports: ['Back', 'Circ'] // Specify the gsap modules you want to import. By default, gsap & Linear are loaded
+        imports: ['Power2'], // Specify the gsap modules you want to import. By default, gsap is loaded
+        plugins: ['PixiPlugin', 'ScrollTrigger'] // Various plugins to load, gsap.registerPlugin() will be called on each of them 
       }
     ]
   ]
@@ -67,7 +68,8 @@ or nuxtGsap section in nuxt.config.js
     'nuxt-gsap'
   ],
   nuxtGsap: {
-    imports: ['Back', 'Circ'] // Specify the gsap modules you want to import. By default, gsap & Linear are loaded
+    imports: ['Power2'], // Specify the gsap modules you want to import. By default, gsap is loaded
+    plugins: ['PixiPlugin', 'ScrollTrigger'] // Various plugins to load, gsap.registerPlugin() will be called on each of them 
   }
 ```
 
@@ -89,7 +91,7 @@ index.vue
 export default {
   mounted () {
     this.$nextTick(() => { // When using $refs, must wait for nextTick
-      const tl = this.$gsap.timeline({ repeat: -1, ease: this.$gsap.Linear.easeInOut(2) })
+      const tl = this.$gsap.timeline({ repeat: -1, ease: this.$gsap.Power2.easeInOut(2) })
       tl.to('.test', 2, { x: 200 }) // With css selector
       tl.to(this.$refs.test, 0.5, { x: 0 }) // With refs
     })
